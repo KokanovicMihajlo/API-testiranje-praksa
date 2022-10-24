@@ -4,7 +4,7 @@
   "description": "API, Testing, QA",
   "main": "index.js",
   "scripts": {
-    "test": "cypress run"
+    "test": "cucumber-js e2e/features/ -r e2e/step_definitions/"
   },
   "repository": {
     "type": "git",
