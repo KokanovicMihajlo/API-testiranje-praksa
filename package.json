@@ -1,0 +1,19 @@
+{
+    "name": "endava-praksa",
+    "version": "1.0.0",
+    "description": "cypress, QA, automation",
+    "scripts": {
+        "test": "cypress run"
+    },
+    "keywords": [
+        "API"
+    ],
+    
+    "devDependencies": {
+        "esbuild": "^0.15.10",
+        "multiple-cucumber-html-reporter": "^3.0.1"
+    },
+    "dependencies": {
+        "axios": "^1.1.3"
+    }
+}
