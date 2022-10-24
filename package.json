@@ -1,0 +1,31 @@
+{
+  "name": "api-testiranje-praksa",
+  "version": "1.0.0",
+  "description": "API, Testing, QA",
+  "main": "index.js",
+  "scripts": {
+    "test": "cy run"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KokanovicMihajlo/API-testiranje-praksa.git"
+  },
+  "keywords": [
+    "API"
+  ],
+  "author": "MK",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KokanovicMihajlo/API-testiranje-praksa/issues"
+  },
+  "homepage": "https://github.com/KokanovicMihajlo/API-testiranje-praksa#readme",
+  "devDependencies": {
+    "@cucumber/cucumber": "^8.7.0",
+    "chai": "^4.3.6",
+    "esbuild": "^0.15.10",
+    "multiple-cucumber-html-reporter": "^3.0.1"
+  },
+  "dependencies": {
+    "axios": "^1.1.3"
+  }
+}
