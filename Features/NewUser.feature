@@ -8,7 +8,7 @@ Feature: API requests
 
         When  A user updates email
         Then  His email should be updated
-
+        
         Then  A user should be able to login successsfully
         Then  A user should be able to logout successsfully
         
