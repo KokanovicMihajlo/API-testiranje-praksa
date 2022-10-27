@@ -13,18 +13,18 @@ Given('I want to create new user',async(dataTable) => {
 });
 
 
-Then('A new user should be created',async() => {
+Then('A new user should be created',() => {
     Functions.getUser();
 
 });
 
 
-When('A user updates email',async() => {
+When('A user updates email',() => {
     Functions.emailUpdate();
 });
 
 
-Then('His email should be updated',async() => {
+Then('His email should be updated',() => {
     Functions.checkEmail();
 });
 
@@ -39,11 +39,11 @@ Then('A user should be able to logout successsfully',() => {
 });
 
 
-When('A user wants to be deleted',async() => {
+When('A user wants to be deleted',() => {
     Functions.deleteUser();
 });
 
 
-Then('A user should be deleted',async() => {
+Then('A user should be deleted',() => {
      Functions.getDeletedUser();
 });
