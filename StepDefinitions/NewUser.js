@@ -8,23 +8,23 @@ let credentials
 
 Given('I want to create new user',async(dataTable) => {
     credentials = dataTable.hashes();
-    await Functions.createNewUser(dataTable);
+    await Functions.createNewUser(credentials);
 });
 
 
-Then('A new user should be created',async(username) => {
-    await Functions.getUserByUsername(username, credentials);
+Then('A new user should be created',async() => {
+    Functions.getUser();
 
 });
 
 
-When('A user updates email',async(email, username) => {
-    await Functions.emailUpdate(email, username, credentials);
+When('A user updates email',async() => {
+    Functions.emailUpdate();
 });
 
 
-Then('His email should be updated',async(email) => {
-    await Functions.checkEmailUpdate(email, credentials);
+Then('His email should be updated',async() => {
+    Functions.checkEmail();
 });
 
 
@@ -38,11 +38,11 @@ Then('A user should be able to logout successsfully',() => {
 });
 
 
-When('A user wants to be deleted',async(username,firstName,lastName,email) => {
-    await Functions.deleteUser(username,firstName,lastName,email);
+When('A user wants to be deleted',async() => {
+    Functions.deleteUser();
 });
 
 
-Then('A user should be deleted',async(username,firstName,lastName,email) => {
-    await Functions.getDeletedUser(username,firstName,lastName,email);
+Then('A user should be deleted',async() => {
+     Functions.getDeletedUser();
 });

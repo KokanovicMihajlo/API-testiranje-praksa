@@ -4,6 +4,10 @@ Feature: API requests
     
     Scenario: Testing basic API requests and responses
         Given I want to create new user
+
+        | id  | username | firstName | lastName  | email           | password  | phone      | userStatus  |
+        | 111 | Djole111 | Djordje   | Djordjevic| djole@gmail.com | ovojesifra| 00381225599| 1           |
+
         Then  A new user should be created
 
         When  A user updates email
@@ -11,10 +15,8 @@ Feature: API requests
         
         Then  A user should be able to login successsfully
         Then  A user should be able to logout successsfully
-        
+
         When  A user wants to be deleted
         Then  A user should be deleted
 
-        Examples:
-        | id  | username | firstName | lastName  | email           | password  | phone      | userStatus  |
-        | 111 | Djole111 | Djordje   | Djordjevic| djole@gmail.com | ovojesifra| 00381225599| 1           |
+      
