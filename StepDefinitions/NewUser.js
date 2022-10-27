@@ -1,44 +1,48 @@
-const { Given, When, Then, And } = require('cucumber');
+const {
+    Given,
+    When,
+    Then,} = require('cucumber');
 
-const Commands = require('../Commands');
+const Functions = require('../Functions.js');
+let credentials
 
-Given('Request for creating new user is sent', async(dataTable) => {
+Given('I want to create new user',async(dataTable) => {
     credentials = dataTable.hashes();
-    await Commands.createNewUser(dataTable);
+    await Functions.createNewUser(dataTable);
 });
 
 
-Then('A new user {string} should be created', async(username) => {
-    await Commands.getUserByUsername(username, credentials);
+Then('A new user should be created',async(username) => {
+    await Functions.getUserByUsername(username, credentials);
 
 });
 
 
-When('A user updates email: {string} for the user: {string}', async(email, username) => {
-    await Commands.emailUpdate(email, username, credentials);
+When('A user updates email',async(email, username) => {
+    await Functions.emailUpdate(email, username, credentials);
 });
 
 
-Then('A new email: {string} should be updated', async(email) => {
-    await Commands.checkEmailUpdate(email, credentials);
+Then('His email should be updated',async(email) => {
+    await Functions.checkEmailUpdate(email, credentials);
 });
 
 
-Then('A user should be able to login successsfully', async() => {
-    await Commands.loginUser(credentials);
+Then('A user should be able to login successsfully',() => {
+    Functions.loginUser(credentials);
 });
 
 
-Then('A user should be able to logout successsfully', async() => {
-    await Commands.logoutUser();
+Then('A user should be able to logout successsfully',() => {
+    Functions.logoutUser();
 });
 
 
-Then('A user should be able to delete user by username: {string}', async(username) => {
-    await Commands.deleteUser(username);
+When('A user wants to be deleted',async(username,firstName,lastName,email) => {
+    await Functions.deleteUser(username,firstName,lastName,email);
 });
 
 
-Then('A user: {string} should be deleted', async(username) => {
-    await Commands.getDeletedUser(username);
+Then('A user should be deleted',async(username,firstName,lastName,email) => {
+    await Functions.getDeletedUser(username,firstName,lastName,email);
 });
