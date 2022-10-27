@@ -4,6 +4,7 @@ const {
     Then,} = require('cucumber');
 
 const Functions = require('../Functions.js');
+
 let credentials
 
 Given('I want to create new user',async(dataTable) => {
