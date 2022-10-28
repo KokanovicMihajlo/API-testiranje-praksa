@@ -22,34 +22,41 @@ class Functions {
             })
             .catch(function(error) {
                 throw new Error(
-                    `Cannot post, error: ${error.message}}`,
+                    `Cannot create new user, error: ${error.message}}`,
                 );
             })
     }
 
-   async getUser(username) {
-        await axios.get(userUrl + username)
+   async getUser(username,credentials) {
+        await axios.get(userUrl + "/" + username)
         .then(function(response) {
             response.status.should.be.equal(200)
-            response.data.id.should.be.equal(credentials[0].id)
+            response.data.id.should.be.equal(parseInt(credentials[0].id))
             response.data.username.should.be.equal(credentials[0].username)
             response.data.firstName.should.be.equal(credentials[0].firstName)
             response.data.lastName.should.be.equal(credentials[0].lastName)
             response.data.email.should.be.equal(credentials[0].email)
             response.data.password.should.be.equal(credentials[0].password)
             response.data.phone.should.be.equal(credentials[0].phone)
-            response.data.userStatus.should.be.equal(credentials[0].userStatus)
+            response.data.userStatus.should.be.equal(parseInt(credentials[0].userStatus))
         })
             .catch(function(error) {
                 throw new Error(
-                    `Cannot get, error: ${error.message}}`,
+                    `Cannot check if user is created, error: ${error.message}}`,
                 );
             })
     }
 
-    emailUpdate(username, email) {
-         axios.put(userUrl + username, {
-                email:'djole111@gmail.com'
+    async emailUpdate(username, email,credentials) {
+         await axios.put(userUrl + "/" + username, {
+            "id": credentials[0].id,
+            "username": credentials[0].username,
+            "firstName": credentials[0].firstName,
+            "lastName": credentials[0].lastName,
+            "email": email,
+            "password": credentials[0].password,
+            "phone": credentials[0].phone,
+            "userStatus": credentials[0].userStatus
             })
             .then(function(response) {
                 response.status.should.be.equal(200)
@@ -57,21 +64,21 @@ class Functions {
             })
             .catch(function(error) {
                 throw new Error(
-                    `Cannot put, error: ${error.message}}`,
+                    `Cannot update email, error: ${error.message}}`,
                 );
             })
     }
 
-    async checkEmail(email) {
-        await axios.get(userUrl + email)
+    async checkEmail(email,credentials) {
+        await axios.get(userUrl + "/" + credentials[0].username)
         .then(function(response) {
             response.status.should.be.equal(200)
             response.data.username.should.be.equal(credentials[0].username)
-            response.data.email.should.be.equal(credentials[0].email)
+            response.data.email.should.be.equal(email)
         })
             .catch(function(error) {
                 throw new Error(
-                    `Cannot get, error: ${error.message}}`,
+                    `Cannot check email update, error: ${error.message}}`,
                 );
             })
     }
@@ -81,15 +88,13 @@ class Functions {
         let username = credentials[0].username
         let password = credentials[0].password
 
-        await axios.get(userUrl + username + password)
+        await axios.get(userUrl + "/" + "login?username=" + username + "&" + "password" + "=" + password)
             .then(function(response) {
                 response.status.should.be.equal(200)
-                console.log(response)
             })
             .catch(function(error) {
-                console.log(error)
                 throw new Error(
-                    `Cannot get, error: ${error.message}}`,
+                    `User cannot login, error: ${error.message}}`,
                 );
             })
     }
@@ -101,29 +106,28 @@ class Functions {
             })
             .catch(function(error) {
                 throw new Error(
-                    `Cannot get, error: ${error.message}}`,
+                    `User cannot logout, error: ${error.message}}`,
                 );
             })
     }
 
     async deleteUser(username) {
-        await axios.delete(userUrl + username,)
+        await axios.delete(userUrl + "/" + username,)
             .then(function(response) {
                 response.status.should.be.equal(200)
             })
             .catch(function(error) {
-                console.log(error)
                 throw new Error(
-                    `Cannot delete, error: ${error.message}}`,
+                    `Cannot delete user, error: ${error.message}}`,
                 );
             })
     }
 
     async getDeletedUser(username) {
-        await axios.get(userUrl + username)
+        await axios.get(userUrl + "/" + username)
             .then(function(response) {
                 throw new Error(
-                    `User exists, error: ${response.data}}`,
+                    `User is not deleted, error: ${response.data}}`,
                 );
 
             })

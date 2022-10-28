@@ -13,37 +13,37 @@ Given('I want to create new user',async(dataTable) => {
 });
 
 
-Then('A new user should be created',() => {
-    Functions.getUser();
+Then('A new user {string} should be created',async(username) => {
+    await Functions.getUser(username,credentials);
 
 });
 
 
-When('A user updates email',() => {
-    Functions.emailUpdate();
+When('A user {string} updates email to {string}',async(username,email) => {
+    await Functions.emailUpdate(username,email,credentials);
 });
 
 
-Then('His email should be updated',() => {
-    Functions.checkEmail();
+Then('His email should be updated to {string}',async(email) => {
+    await Functions.checkEmail(email,credentials);
 });
 
 
-Then('A user should be able to login successsfully',() => {
-    Functions.loginUser(credentials);
+Then('A user should be able to login successsfully',async() => {
+   await Functions.loginUser(credentials);
 });
 
 
-Then('A user should be able to logout successsfully',() => {
-    Functions.logoutUser();
+Then('A user should be able to logout successsfully',async() => {
+    await Functions.logoutUser();
 });
 
 
-When('A user wants to be deleted',() => {
-    Functions.deleteUser();
+When('A user {string} wants to be deleted',async(username) => {
+    await Functions.deleteUser(username);
 });
 
 
-Then('A user should be deleted',() => {
-     Functions.getDeletedUser();
+Then('A user {string} should be deleted',async(username) => {
+    await Functions.getDeletedUser(username);
 });
