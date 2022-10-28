@@ -47,7 +47,7 @@ class Functions {
             })
     }
 
-    async emailUpdate(username, email,credentials) {
+    async emailUpdate(username, email, credentials) {
          await axios.put(userUrl + "/" + username, {
             "id": credentials[0].id,
             "username": credentials[0].username,
@@ -64,7 +64,7 @@ class Functions {
             })
             .catch(function(error) {
                 throw new Error(
-                    `Cannot update email, error: ${error.message}}`,
+                    `Cannot update email for this user, error: ${error.message}}`,
                 );
             })
     }

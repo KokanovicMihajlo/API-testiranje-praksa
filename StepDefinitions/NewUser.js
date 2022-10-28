@@ -30,7 +30,7 @@ Then('His email should be updated to {string}',async(email) => {
 
 
 Then('A user should be able to login successsfully',async() => {
-   await Functions.loginUser(credentials);
+   await Functions.loginUser(credentials[0].username, credentials[0].password);
 });
 
 
