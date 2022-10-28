@@ -4,7 +4,7 @@
   "description": "API, Testing, QA",
   "main": "index.js",
   "scripts": {
-    "test": "cypress run"
+    "test": "cucumber-js Features/ -r StepDefinitions/"
   },
   "repository": {
     "type": "git",
@@ -20,13 +20,12 @@
   },
   "homepage": "https://github.com/KokanovicMihajlo/API-testiranje-praksa#readme",
   "devDependencies": {
-    "@cucumber/cucumber": "^8.7.0",
     "chai": "^4.3.6",
     "esbuild": "^0.15.10",
     "multiple-cucumber-html-reporter": "^3.0.1"
   },
   "dependencies": {
     "axios": "^1.1.3",
-    "cypress": "^10.10.0"
+    "cucumber": "^6.0.7"
   }
 }
