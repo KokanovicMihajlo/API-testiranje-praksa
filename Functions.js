@@ -83,10 +83,7 @@ class Functions {
             })
     }
 
-    async loginUser(credentials) {
-
-        let username = credentials[0].username
-        let password = credentials[0].password
+    async loginUser(username, password) {
 
         await axios.get(userUrl + "/" + "login?username=" + username + "&" + "password" + "=" + password)
             .then(function(response) {
